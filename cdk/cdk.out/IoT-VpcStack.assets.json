@@ -1,0 +1,20 @@
+{
+  "version": "54.0.0",
+  "files": {
+    "65d78b60838a0c55331890abc55bc1f4c9518e0992a6728120c47f6310784b02": {
+      "displayName": "IoT-VpcStack Template",
+      "source": {
+        "path": "IoT-VpcStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region-6da33eca": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "65d78b60838a0c55331890abc55bc1f4c9518e0992a6728120c47f6310784b02.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

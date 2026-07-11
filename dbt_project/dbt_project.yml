@@ -1,0 +1,31 @@
+name: 'hackathon_iot_pipeline'
+version: '1.0.0'
+config-version: 2
+
+# Profile to use from profiles.yml
+profile: 'snowflake_iot'
+
+# Directory configuration
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+# Configure materialization strategies for each layer
+models:
+  hackathon_iot_pipeline:
+    bronze:
+      +materialized: view
+      +schema: RAW
+    silver:
+      +materialized: table
+      +schema: CLEAN
+    gold:
+      +materialized: table
+      +schema: ANALYTICS

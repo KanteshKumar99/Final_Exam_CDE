@@ -1,0 +1,33 @@
+{
+  "app": "python app.py",
+  "watch": {
+    "include": [
+      "**"
+    ],
+    "exclude": [
+      "README.md",
+      "cdk*.json",
+      "requirements.txt",
+      "db/",
+      "connectors/",
+      "dbt_project/",
+      "streamlit/",
+      "lambda/",
+      "simulator/"
+    ]
+  },
+  "context": {
+    "@aws-cdk/aws-apigateway:usagePlanKeyOrderInsensitiveId": true,
+    "@aws-cdk/core:stackRelativeExports": true,
+    "@aws-cdk/aws-rds:databaseInsensitiveClusterId": true,
+    "@aws-cdk/aws-rds:preventDataLoss": false,
+    "@aws-cdk/aws-s3:createDefaultLoggingPolicy": true,
+    "@aws-cdk/aws-sns-subscriptions:restrictSqsDescryption": true,
+    "@aws-cdk/aws-apigateway:disableCloudWatchRole": true,
+    "@aws-cdk/core:checkSecretUsage": true,
+    "@aws-cdk/aws-iam:minimizePolicies": true,
+    "@aws-cdk/aws-ecs:disableOfStatefulAutoscaling": true,
+    "@aws-cdk/aws-codepipeline:useNewVolumeParameters": true,
+    "@aws-cdk/aws-kms:aliasNameRef": true
+  }
+}

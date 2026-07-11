@@ -1,0 +1,829 @@
+{
+ "Description": "Network VPC structure for IoT Ingestion Hackathon",
+ "Resources": {
+  "IoTVpcD571E817": {
+   "Type": "AWS::EC2::VPC",
+   "Properties": {
+    "CidrBlock": "10.0.0.0/16",
+    "EnableDnsHostnames": true,
+    "EnableDnsSupport": true,
+    "InstanceTenancy": "default",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "IoT-VpcStack/IoT-Vpc"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "IoT-VpcStack/IoT-Vpc/Resource"
+   }
+  },
+  "IoTVpcPublicSubnet1SubnetBA59BA16": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.0.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "IoT-VpcStack/IoT-Vpc/PublicSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "IoTVpcD571E817"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "IoT-VpcStack/IoT-Vpc/PublicSubnet1/Subnet"
+   }
+  },
+  "IoTVpcPublicSubnet1RouteTable40CC8AFF": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "IoT-VpcStack/IoT-Vpc/PublicSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "IoTVpcD571E817"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "IoT-VpcStack/IoT-Vpc/PublicSubnet1/RouteTable"
+   }
+  },
+  "IoTVpcPublicSubnet1RouteTableAssociationF9A2DBC4": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "IoTVpcPublicSubnet1RouteTable40CC8AFF"
+    },
+    "SubnetId": {
+     "Ref": "IoTVpcPublicSubnet1SubnetBA59BA16"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "IoT-VpcStack/IoT-Vpc/PublicSubnet1/RouteTableAssociation"
+   }
+  },
+  "IoTVpcPublicSubnet1DefaultRoute30F56195": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "IoTVpcIGWB8CAFB17"
+    },
+    "RouteTableId": {
+     "Ref": "IoTVpcPublicSubnet1RouteTable40CC8AFF"
+    }
+   },
+   "DependsOn": [
+    "IoTVpcVPCGWF444EDE6"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "IoT-VpcStack/IoT-Vpc/PublicSubnet1/DefaultRoute"
+   }
+  },
+  "IoTVpcPublicSubnet1EIPB3CCA820": {
+   "Type": "AWS::EC2::EIP",
+   "Properties": {
+    "Domain": "vpc",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "IoT-VpcStack/IoT-Vpc/PublicSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "IoT-VpcStack/IoT-Vpc/PublicSubnet1/EIP"
+   }
+  },
+  "IoTVpcPublicSubnet1NATGatewayAF0EC58D": {
+   "Type": "AWS::EC2::NatGateway",
+   "Properties": {
+    "AllocationId": {
+     "Fn::GetAtt": [
+      "IoTVpcPublicSubnet1EIPB3CCA820",
+      "AllocationId"
+     ]
+    },
+    "SubnetId": {
+     "Ref": "IoTVpcPublicSubnet1SubnetBA59BA16"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "IoT-VpcStack/IoT-Vpc/PublicSubnet1"
+     }
+    ]
+   },
+   "DependsOn": [
+    "IoTVpcPublicSubnet1DefaultRoute30F56195",
+    "IoTVpcPublicSubnet1RouteTableAssociationF9A2DBC4"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "IoT-VpcStack/IoT-Vpc/PublicSubnet1/NATGateway"
+   }
+  },
+  "IoTVpcPublicSubnet2SubnetCCB5722A": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.1.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "IoT-VpcStack/IoT-Vpc/PublicSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "IoTVpcD571E817"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "IoT-VpcStack/IoT-Vpc/PublicSubnet2/Subnet"
+   }
+  },
+  "IoTVpcPublicSubnet2RouteTable414A33AA": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "IoT-VpcStack/IoT-Vpc/PublicSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "IoTVpcD571E817"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "IoT-VpcStack/IoT-Vpc/PublicSubnet2/RouteTable"
+   }
+  },
+  "IoTVpcPublicSubnet2RouteTableAssociation84C64711": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "IoTVpcPublicSubnet2RouteTable414A33AA"
+    },
+    "SubnetId": {
+     "Ref": "IoTVpcPublicSubnet2SubnetCCB5722A"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "IoT-VpcStack/IoT-Vpc/PublicSubnet2/RouteTableAssociation"
+   }
+  },
+  "IoTVpcPublicSubnet2DefaultRouteC23F3453": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "IoTVpcIGWB8CAFB17"
+    },
+    "RouteTableId": {
+     "Ref": "IoTVpcPublicSubnet2RouteTable414A33AA"
+    }
+   },
+   "DependsOn": [
+    "IoTVpcVPCGWF444EDE6"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "IoT-VpcStack/IoT-Vpc/PublicSubnet2/DefaultRoute"
+   }
+  },
+  "IoTVpcPublicSubnet2EIPC1EB2AFC": {
+   "Type": "AWS::EC2::EIP",
+   "Properties": {
+    "Domain": "vpc",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "IoT-VpcStack/IoT-Vpc/PublicSubnet2"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "IoT-VpcStack/IoT-Vpc/PublicSubnet2/EIP"
+   }
+  },
+  "IoTVpcPublicSubnet2NATGateway140C1C4D": {
+   "Type": "AWS::EC2::NatGateway",
+   "Properties": {
+    "AllocationId": {
+     "Fn::GetAtt": [
+      "IoTVpcPublicSubnet2EIPC1EB2AFC",
+      "AllocationId"
+     ]
+    },
+    "SubnetId": {
+     "Ref": "IoTVpcPublicSubnet2SubnetCCB5722A"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "IoT-VpcStack/IoT-Vpc/PublicSubnet2"
+     }
+    ]
+   },
+   "DependsOn": [
+    "IoTVpcPublicSubnet2DefaultRouteC23F3453",
+    "IoTVpcPublicSubnet2RouteTableAssociation84C64711"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "IoT-VpcStack/IoT-Vpc/PublicSubnet2/NATGateway"
+   }
+  },
+  "IoTVpcPrivateSubnet1Subnet85772440": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      0,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.2.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Private"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "Name",
+      "Value": "IoT-VpcStack/IoT-Vpc/PrivateSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "IoTVpcD571E817"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "IoT-VpcStack/IoT-Vpc/PrivateSubnet1/Subnet"
+   }
+  },
+  "IoTVpcPrivateSubnet1RouteTable87B878AE": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "IoT-VpcStack/IoT-Vpc/PrivateSubnet1"
+     }
+    ],
+    "VpcId": {
+     "Ref": "IoTVpcD571E817"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "IoT-VpcStack/IoT-Vpc/PrivateSubnet1/RouteTable"
+   }
+  },
+  "IoTVpcPrivateSubnet1RouteTableAssociation60651C7D": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "IoTVpcPrivateSubnet1RouteTable87B878AE"
+    },
+    "SubnetId": {
+     "Ref": "IoTVpcPrivateSubnet1Subnet85772440"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "IoT-VpcStack/IoT-Vpc/PrivateSubnet1/RouteTableAssociation"
+   }
+  },
+  "IoTVpcPrivateSubnet1DefaultRoute434666CE": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "IoTVpcPublicSubnet1NATGatewayAF0EC58D"
+    },
+    "RouteTableId": {
+     "Ref": "IoTVpcPrivateSubnet1RouteTable87B878AE"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "IoT-VpcStack/IoT-Vpc/PrivateSubnet1/DefaultRoute"
+   }
+  },
+  "IoTVpcPrivateSubnet2Subnet139FA490": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "AvailabilityZone": {
+     "Fn::Select": [
+      1,
+      {
+       "Fn::GetAZs": ""
+      }
+     ]
+    },
+    "CidrBlock": "10.0.3.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "Private"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Private"
+     },
+     {
+      "Key": "Name",
+      "Value": "IoT-VpcStack/IoT-Vpc/PrivateSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "IoTVpcD571E817"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "IoT-VpcStack/IoT-Vpc/PrivateSubnet2/Subnet"
+   }
+  },
+  "IoTVpcPrivateSubnet2RouteTable278FF024": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "IoT-VpcStack/IoT-Vpc/PrivateSubnet2"
+     }
+    ],
+    "VpcId": {
+     "Ref": "IoTVpcD571E817"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "IoT-VpcStack/IoT-Vpc/PrivateSubnet2/RouteTable"
+   }
+  },
+  "IoTVpcPrivateSubnet2RouteTableAssociation4C1C1308": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "IoTVpcPrivateSubnet2RouteTable278FF024"
+    },
+    "SubnetId": {
+     "Ref": "IoTVpcPrivateSubnet2Subnet139FA490"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "IoT-VpcStack/IoT-Vpc/PrivateSubnet2/RouteTableAssociation"
+   }
+  },
+  "IoTVpcPrivateSubnet2DefaultRoute9576032F": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "NatGatewayId": {
+     "Ref": "IoTVpcPublicSubnet2NATGateway140C1C4D"
+    },
+    "RouteTableId": {
+     "Ref": "IoTVpcPrivateSubnet2RouteTable278FF024"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "IoT-VpcStack/IoT-Vpc/PrivateSubnet2/DefaultRoute"
+   }
+  },
+  "IoTVpcIGWB8CAFB17": {
+   "Type": "AWS::EC2::InternetGateway",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "IoT-VpcStack/IoT-Vpc"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "IoT-VpcStack/IoT-Vpc/IGW"
+   }
+  },
+  "IoTVpcVPCGWF444EDE6": {
+   "Type": "AWS::EC2::VPCGatewayAttachment",
+   "Properties": {
+    "InternetGatewayId": {
+     "Ref": "IoTVpcIGWB8CAFB17"
+    },
+    "VpcId": {
+     "Ref": "IoTVpcD571E817"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "IoT-VpcStack/IoT-Vpc/VPCGW"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/0WOQQuCQBSEf4v3dUuj7iIRXmrR8BrP7YWbuivu20TE/x5m6GlmPoZhQh6eAr73oLe+fFZ+rQo+ZgSyYtDbB8qQj3krWfzSuYiZcEWtZOYKjTSzzaXGEd6hqHHjG4usNVIBKaPX8mzOiZjlCnQBwh4GJjr1AcJtONGEnca1sDz5p4gIZNmgpomlaI3r5G/35qh1NDExUGn07sCDkB+9t1XK75wm1SBPF/0CLiBV9wEBAAA="
+   },
+   "Metadata": {
+    "aws:cdk:path": "IoT-VpcStack/CDKMetadata/Default"
+   },
+   "Condition": "CDKMetadataAvailable"
+  }
+ },
+ "Outputs": {
+  "VpcId": {
+   "Description": "VPC ID of the IoT ingestion network",
+   "Value": {
+    "Ref": "IoTVpcD571E817"
+   },
+   "Export": {
+    "Name": "IoT-VpcId"
+   }
+  },
+  "ExportsOutputFnGetAttIoTVpcD571E817CidrBlock4C194008": {
+   "Value": {
+    "Fn::GetAtt": [
+     "IoTVpcD571E817",
+     "CidrBlock"
+    ]
+   },
+   "Export": {
+    "Name": "IoT-VpcStack:ExportsOutputFnGetAttIoTVpcD571E817CidrBlock4C194008"
+   }
+  },
+  "ExportsOutputRefIoTVpcD571E817324CBF9E": {
+   "Value": {
+    "Ref": "IoTVpcD571E817"
+   },
+   "Export": {
+    "Name": "IoT-VpcStack:ExportsOutputRefIoTVpcD571E817324CBF9E"
+   }
+  },
+  "ExportsOutputRefIoTVpcPrivateSubnet1Subnet85772440AD77B3A3": {
+   "Value": {
+    "Ref": "IoTVpcPrivateSubnet1Subnet85772440"
+   },
+   "Export": {
+    "Name": "IoT-VpcStack:ExportsOutputRefIoTVpcPrivateSubnet1Subnet85772440AD77B3A3"
+   }
+  },
+  "ExportsOutputRefIoTVpcPrivateSubnet2Subnet139FA490D57AABD2": {
+   "Value": {
+    "Ref": "IoTVpcPrivateSubnet2Subnet139FA490"
+   },
+   "Export": {
+    "Name": "IoT-VpcStack:ExportsOutputRefIoTVpcPrivateSubnet2Subnet139FA490D57AABD2"
+   }
+  },
+  "ExportsOutputRefIoTVpcPublicSubnet1SubnetBA59BA164135871C": {
+   "Value": {
+    "Ref": "IoTVpcPublicSubnet1SubnetBA59BA16"
+   },
+   "Export": {
+    "Name": "IoT-VpcStack:ExportsOutputRefIoTVpcPublicSubnet1SubnetBA59BA164135871C"
+   }
+  }
+ },
+ "Conditions": {
+  "CDKMetadataAvailable": {
+   "Fn::Or": [
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "af-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-northeast-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-south-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-3"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ap-southeast-4"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "ca-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "cn-northwest-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-central-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-north-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-south-2"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Or": [
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "eu-west-3"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "il-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-central-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "me-south-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "sa-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-1"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-east-2"
+       ]
+      },
+      {
+       "Fn::Equals": [
+        {
+         "Ref": "AWS::Region"
+        },
+        "us-west-1"
+       ]
+      }
+     ]
+    },
+    {
+     "Fn::Equals": [
+      {
+       "Ref": "AWS::Region"
+      },
+      "us-west-2"
+     ]
+    }
+   ]
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

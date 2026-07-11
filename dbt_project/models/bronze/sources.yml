@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: snowflake_raw
+    database: HACKATHON_IOT
+    schema: RAW
+    tables:
+      - name: iot_events
+        description: "Raw logical CDC events from PostgreSQL database loaded by Snowflake Kafka Connector"

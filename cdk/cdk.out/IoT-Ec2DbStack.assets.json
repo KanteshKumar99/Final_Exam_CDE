@@ -1,0 +1,20 @@
+{
+  "version": "54.0.0",
+  "files": {
+    "de6ab57d84fbd7f6c0120a768243442a5f525402e6047220b538b36168b930e3": {
+      "displayName": "IoT-Ec2DbStack Template",
+      "source": {
+        "path": "IoT-Ec2DbStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region-e0cecdb2": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "de6ab57d84fbd7f6c0120a768243442a5f525402e6047220b538b36168b930e3.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

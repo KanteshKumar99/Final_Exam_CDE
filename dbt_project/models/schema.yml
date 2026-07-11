@@ -1,0 +1,53 @@
+version: 2
+
+models:
+  - name: stg_iot_events
+    description: "Bronze Layer: Raw extracted fields from PostgreSQL CDC JSON payloads."
+    columns:
+      - name: event_id
+        description: "Primary key of the raw telemetry event."
+        tests:
+          - not_null
+      - name: device_id
+        description: "Identifier of the IoT device."
+        tests:
+          - not_null
+
+  - name: clean_iot_events
+    description: "Silver Layer: Cleaned, validated, and typed sensor telemetry with severity tags."
+    columns:
+      - name: event_id
+        description: "Primary key of the telemetry event."
+        tests:
+          - unique
+          - not_null
+      - name: device_id
+        description: "Identifier of the IoT device."
+        tests:
+          - not_null
+      - name: event_timestamp
+        description: "Standardized timestamp of the event."
+        tests:
+          - not_null
+      - name: aqi_severity
+        description: "Air quality index severity rating (Good, Moderate, Unhealthy, etc.)."
+        tests:
+          - accepted_values:
+              arguments:
+                values: ['Good', 'Moderate', 'Unhealthy for Sensitive Groups', 'Unhealthy', 'Hazardous', 'Unknown']
+
+  - name: daily_device_aggregates
+    description: "Gold Layer: Daily telemetry statistics grouped by device."
+    columns:
+      - name: device_id
+        description: "Identifier of the IoT device."
+        tests:
+          - not_null
+      - name: event_date
+        description: "Date of the aggregated events."
+        tests:
+          - not_null
+      - name: total_readings
+        description: "Total number of telemetry readings captured on this day."
+        tests:
+          - not_null

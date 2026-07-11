@@ -1,0 +1,45 @@
+{
+    "path_count": 158,
+    "parsed_path_count": 2,
+    "static_analysis_path_count": 1,
+    "static_analysis_parsed_path_count": 1,
+    "is_partial_parse_enabled": true,
+    "is_static_analysis_enabled": true,
+    "read_files_elapsed": 0.25461969999741996,
+    "load_macros_elapsed": 0.0015028000016172882,
+    "parse_project_elapsed": 1.5860634999989998,
+    "patch_sources_elapsed": 2.6100002287421376e-05,
+    "process_manifest_elapsed": 0.008511299998644972,
+    "load_all_elapsed": 2.663550100001885,
+    "projects": [
+        {
+            "project_name": "hackathon_iot_pipeline",
+            "elapsed": 1.5858872999961022,
+            "parsers": [
+                {
+                    "parser": "model",
+                    "elapsed": 0.8512318000030064,
+                    "parsed_path_count": 1
+                },
+                {
+                    "parser": "test",
+                    "elapsed": 0.7346266000022297,
+                    "parsed_path_count": 1
+                }
+            ],
+            "parsed_path_count": 2
+        },
+        {
+            "project_name": "dbt_snowflake",
+            "elapsed": 0,
+            "parsers": [],
+            "parsed_path_count": 0
+        },
+        {
+            "project_name": "dbt",
+            "elapsed": 0,
+            "parsers": [],
+            "parsed_path_count": 0
+        }
+    ]
+}

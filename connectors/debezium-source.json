@@ -1,0 +1,22 @@
+{
+  "name": "debezium-postgresql-source-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "tasks.max": "1",
+    "plugin.name": "pgoutput",
+    "database.hostname": "<POSTGRES_PRIVATE_IP>",
+    "database.port": "5432",
+    "database.user": "replication_user",
+    "database.password": "${file:/secrets/postgresql:password}",
+    "database.dbname": "iot_db",
+    "topic.prefix": "cdc",
+    "table.include.list": "public.iot_events",
+    "tombstones.on.delete": "false",
+    "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "key.converter.schemas.enable": "false",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable": "false",
+    "database.history.kafka.bootstrap.servers": "<MSK_BOOTSTRAP_BROKERS>",
+    "database.history.kafka.topic": "schema-changes.iot-events"
+  }
+}

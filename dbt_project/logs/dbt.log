@@ -1,0 +1,60 @@
+[0m00:19:17.949582 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025E5E233EF0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025E5DDA27E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025E5E54A3F0>]}
+
+
+============================== 00:19:17.959143 | 09dbbdee-d44d-416c-b868-7b1bb1498fa1 ==============================
+[0m00:19:17.959143 [info ] [MainThread]: Running with dbt=1.10.20
+[0m00:19:17.963042 [debug] [MainThread]: running dbt with arguments {'static_parser': 'True', 'no_print': 'None', 'version_check': 'True', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'printer_width': '80', 'write_json': 'True', 'introspect': 'True', 'log_cache_events': 'False', 'empty': 'None', 'cache_selected_only': 'False', 'fail_fast': 'False', 'debug': 'False', 'log_format': 'default', 'profiles_dir': '.', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'use_colors': 'True', 'invocation_command': 'dbt parse --profiles-dir .', 'use_experimental_parser': 'False', 'log_path': 'F:\\Cloud Data Engineer\\Final Hackathon\\dbt_project\\logs'}
+[0m00:19:19.169324 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m00:19:19.170730 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m00:19:19.172249 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m00:19:19.356214 [debug] [MainThread]: Snowflake adapter: Replaced underscores (_) with hyphens (-) in Snowflake account name to form a valid account URL.
+[0m00:19:19.935155 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '09dbbdee-d44d-416c-b868-7b1bb1498fa1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025E5E4B4800>]}
+[0m00:19:20.119988 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '09dbbdee-d44d-416c-b868-7b1bb1498fa1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025E5FE6DBB0>]}
+[0m00:19:20.123049 [info ] [MainThread]: Registered adapter: snowflake=1.11.2
+[0m00:19:21.516305 [debug] [MainThread]: checksum: a2dd717d56b7fa105aa967460f8408a71460d755763c8570e48c01c133187aea, vars: {}, profile: , target: , version: 1.10.20
+[0m00:19:21.518605 [info ] [MainThread]: Unable to do partial parsing because saved manifest not found. Starting full parse.
+[0m00:19:21.519897 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '09dbbdee-d44d-416c-b868-7b1bb1498fa1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025E60C01730>]}
+[0m00:19:32.264210 [warn ] [MainThread]: [[33mWARNING[0m][MissingArgumentsPropertyInGenericTestDeprecation]: Deprecated
+functionality
+Found top-level arguments to test `accepted_values`. Arguments to generic tests
+should be nested under the `arguments` property.`
+[0m00:19:32.266361 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'deprecation', 'label': '09dbbdee-d44d-416c-b868-7b1bb1498fa1', 'property_': 'warn', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025E610AD520>]}
+[0m00:19:34.087631 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '09dbbdee-d44d-416c-b868-7b1bb1498fa1', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025E609F3440>]}
+[0m00:19:34.109525 [info ] [MainThread]: Performance info: F:\Cloud Data Engineer\Final Hackathon\dbt_project\target\perf_info.json
+[0m00:19:35.481838 [debug] [MainThread]: Wrote artifact WritableManifest to F:\Cloud Data Engineer\Final Hackathon\dbt_project\target\manifest.json
+[0m00:19:35.554513 [debug] [MainThread]: Wrote artifact SemanticManifest to F:\Cloud Data Engineer\Final Hackathon\dbt_project\target\semantic_manifest.json
+[0m00:19:35.557020 [warn ] [MainThread]: [[33mWARNING[0m][DeprecationsSummary]: Deprecated functionality
+Summary of encountered deprecations:
+- MissingArgumentsPropertyInGenericTestDeprecation: 1 occurrence
+To see all deprecation instances instead of just the first occurrence of each,
+run command again with the `--show-all-deprecations` flag. You may also need to
+run with `--no-partial-parse` as some deprecations are only encountered during
+parsing.
+[0m00:19:35.563042 [debug] [MainThread]: Command `dbt parse` succeeded at 00:19:35.562526 after 17.96 seconds
+[0m00:19:35.564319 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025E5E0FF590>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025E5E0FF6E0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000025E5E0FEE10>]}
+[0m00:19:35.566730 [debug] [MainThread]: Flushing usage events
+[0m00:19:43.349105 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m00:20:31.817945 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027154D46F00>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027151F05D30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027151612120>]}
+
+
+============================== 00:20:31.834497 | 7f0ddaec-55bf-411a-b496-bdd6f487846c ==============================
+[0m00:20:31.834497 [info ] [MainThread]: Running with dbt=1.10.20
+[0m00:20:31.843341 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'target_path': 'None', 'printer_width': '80', 'write_json': 'True', 'empty': 'None', 'log_cache_events': 'False', 'introspect': 'True', 'cache_selected_only': 'False', 'log_format': 'default', 'debug': 'False', 'fail_fast': 'False', 'profiles_dir': '.', 'send_anonymous_usage_stats': 'True', 'quiet': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'indirect_selection': 'eager', 'use_colors': 'True', 'invocation_command': 'dbt parse --profiles-dir .', 'use_experimental_parser': 'False', 'log_path': 'F:\\Cloud Data Engineer\\Final Hackathon\\dbt_project\\logs'}
+[0m00:20:33.600370 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m00:20:33.600370 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m00:20:33.600370 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m00:20:33.926594 [debug] [MainThread]: Snowflake adapter: Replaced underscores (_) with hyphens (-) in Snowflake account name to form a valid account URL.
+[0m00:20:34.730513 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '7f0ddaec-55bf-411a-b496-bdd6f487846c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027157751430>]}
+[0m00:20:35.070554 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '7f0ddaec-55bf-411a-b496-bdd6f487846c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027154C9A6F0>]}
+[0m00:20:35.077660 [info ] [MainThread]: Registered adapter: snowflake=1.11.2
+[0m00:20:36.648930 [debug] [MainThread]: checksum: a2dd717d56b7fa105aa967460f8408a71460d755763c8570e48c01c133187aea, vars: {}, profile: , target: , version: 1.10.20
+[0m00:20:37.364768 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 1 files changed.
+[0m00:20:37.373317 [debug] [MainThread]: Partial parsing: updated file: hackathon_iot_pipeline://models\schema.yml
+[0m00:20:39.286078 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '7f0ddaec-55bf-411a-b496-bdd6f487846c', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027157F080B0>]}
+[0m00:20:39.311806 [info ] [MainThread]: Performance info: F:\Cloud Data Engineer\Final Hackathon\dbt_project\target\perf_info.json
+[0m00:20:39.774422 [debug] [MainThread]: Wrote artifact WritableManifest to F:\Cloud Data Engineer\Final Hackathon\dbt_project\target\manifest.json
+[0m00:20:39.784759 [debug] [MainThread]: Wrote artifact SemanticManifest to F:\Cloud Data Engineer\Final Hackathon\dbt_project\target\semantic_manifest.json
+[0m00:20:39.789990 [debug] [MainThread]: Command `dbt parse` succeeded at 00:20:39.789445 after 8.50 seconds
+[0m00:20:39.791668 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000271526DF740>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027154561550>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000027157D603B0>]}
+[0m00:20:39.792783 [debug] [MainThread]: Flushing usage events
+[0m00:20:48.775250 [debug] [MainThread]: An error was encountered while trying to flush usage events

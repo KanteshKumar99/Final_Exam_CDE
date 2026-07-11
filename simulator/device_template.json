@@ -1,0 +1,27 @@
+{
+  "template_name": "london-geolocation-sensor",
+  "location": {
+    "center_latitude": 51.5030,
+    "center_longitude": 0.0032,
+    "radius_meters": 500
+  },
+  "metrics": {
+    "aqi": {
+      "min": 10,
+      "max": 180,
+      "type": "integer"
+    },
+    "temperature": {
+      "min": 12.0,
+      "max": 28.5,
+      "type": "float"
+    }
+  },
+  "devices": [
+    "device_london_001",
+    "device_london_002",
+    "device_london_003",
+    "device_london_004",
+    "device_london_005"
+  ]
+}

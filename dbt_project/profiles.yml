@@ -1,0 +1,14 @@
+snowflake_iot:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: "{{ env_var('SNOWFLAKE_ACCOUNT', 'your_account') }}"
+      user: "{{ env_var('SNOWFLAKE_USER', 'KAFKA_CONNECTOR_USER') }}"
+      password: "{{ env_var('SNOWFLAKE_PASSWORD', 'SecureTempPassword123!') }}"
+      role: "{{ env_var('SNOWFLAKE_ROLE', 'IOT_PIPELINE_ROLE') }}"
+      warehouse: "{{ env_var('SNOWFLAKE_WAREHOUSE', 'IOT_WH') }}"
+      database: "{{ env_var('SNOWFLAKE_DATABASE', 'HACKATHON_IOT') }}"
+      schema: RAW
+      threads: 4
+      client_session_keep_alive: true
