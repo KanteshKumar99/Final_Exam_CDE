@@ -1,0 +1,61 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.venv/
+venv/
+env/
+
+# dbt
+dbt_project/target/
+dbt_project/dbt_packages/
+dbt_project/logs/
+dbt_project/.user.yml
+
+# Streamlit
+.streamlit/secrets.toml
+
+# AWS / CDK
+cdk/.venv/
+cdk/node_modules/
+cdk/cdk.out/
+*.cdk.staging/
+
+# AWS Credentials (NEVER commit these)
+.aws/
+*.pem
+*.p8
+*.pub
+rsa_key.*
+
+# Environment variables
+.env
+.env.*
+*.env
+
+# Secrets
+secrets/
+**/secrets.json
+**/credentials.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+logs/
